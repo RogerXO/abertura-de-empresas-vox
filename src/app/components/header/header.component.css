@@ -1,0 +1,19 @@
+.header {
+  height: 150px;
+  padding: 1rem 2rem;
+  background-color: #c3cfda;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-left {
+  gap: 1rem;
+}
+
+.header-text {
+  color: #2C88D9;
+}
+
+.logo {
+  height: auto;
+  width: auto;
+}

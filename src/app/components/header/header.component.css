@@ -9,11 +9,11 @@
   gap: 1rem;
 }
 
-.header-text {
-  color: #2C88D9;
+.logo {
+  width: 100px;
+  height: 100px;
 }
 
-.logo {
-  height: auto;
-  width: auto;
+.header-text {
+  color: #2c88d9;
 }

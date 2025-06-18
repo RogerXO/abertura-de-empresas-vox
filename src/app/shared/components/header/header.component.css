@@ -27,3 +27,17 @@
 .button:hover {
   background-color: #007DDB;
 }
+
+@media (max-width: 500px) {
+  .header {
+    flex-direction: column;
+    max-height: 350px;
+    height: auto;
+    gap: 20px
+  }
+
+  .header-left {
+    flex-direction: column;
+    text-align: center;
+  }
+}

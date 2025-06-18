@@ -5,7 +5,7 @@
 >
   <div class="row">
     <!-- Coluna esquerda -->
-    <div class="col-md-5">
+    <div class="col-md-5 left-panel">
       <h5 class="mb-4 form-title">Dados do solicitante</h5>
 
       <app-input
@@ -21,11 +21,11 @@
 
       <app-input
         label="CPF*"
+        placeholder="000.000.000-00"
         [formGroup]="pedidosFormService.form"
         controlName="cpf"
         [isInvalid]="
-          getFormControl('cpf')?.invalid &&
-          getFormControl('cpf')?.touched
+          getFormControl('cpf')?.invalid && getFormControl('cpf')?.touched
         "
         errorMessage="{{
           getFormControl('cpf')?.hasError('pattern')
@@ -40,21 +40,19 @@
         [formGroup]="pedidosFormService.form"
         controlName="birth"
         [isInvalid]="
-          getFormControl('birth')?.invalid &&
-          getFormControl('birth')?.touched
+          getFormControl('birth')?.invalid && getFormControl('birth')?.touched
         "
         errorMessage="Campo obrigatório."
       ></app-input>
 
-      <h5 class="mb-3 mt-4">Dados da empresa</h5>
+      <h5 class="mb-3 mt-4 form-title">Dados da empresa</h5>
 
       <app-input
         label="Nome fantasia*"
         [formGroup]="pedidosFormService.form"
         controlName="name"
         [isInvalid]="
-          getFormControl('name')?.invalid &&
-          getFormControl('name')?.touched
+          getFormControl('name')?.invalid && getFormControl('name')?.touched
         "
         errorMessage="Campo obrigatório."
       ></app-input>
@@ -81,11 +79,10 @@
 
     <!-- Divisor -->
     <div
-      class="col-md-1 divider-with-arrow d-none d-md-flex align-items-center justify-content-center"
+      *ngIf="showDivider"
+      class="col-md-1 d-none d-md-flex align-items-center justify-content-center"
     >
-      <div class="vertical-line top-line"></div>
-      <div class="arrow-icon"></div>
-      <div class="vertical-line bottom-line"></div>
+      <div class="vertical-line"></div>
     </div>
 
     <!-- Coluna direita -->
@@ -95,6 +92,7 @@
       <div [formGroupName]="'address'">
         <app-input
           label="CEP*"
+          placeholder="000000-00"
           [formGroup]="addressControls"
           controlName="zipcode"
           [isInvalid]="
@@ -200,7 +198,7 @@
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" class="btn btn-primary mb-4">
         <i class="bi bi-send-fill me-1"></i> Enviar
       </button>
     </div>

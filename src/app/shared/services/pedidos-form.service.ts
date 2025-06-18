@@ -21,7 +21,7 @@ export class PedidosFormService {
       street: ['', Validators.required],
       number: ['', Validators.required],
       neighborhood: ['', Validators.required],
-      city: ['BH', Validators.required],
+      city: ['', Validators.required],
       zipcode: ['', [Validators.required, Validators.pattern(/^\d{5}-\d{3}$/)]],
       complement: [''],
       state: ['', Validators.required],

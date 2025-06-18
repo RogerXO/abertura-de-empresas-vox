@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { PedidosFormService } from '../../../shared/services/pedidos-form.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -11,10 +11,26 @@ import { InputComponent } from '../../../shared/components/input/input.component
   styleUrl: './pedidos-form.component.css',
 })
 export class PedidosFormComponent implements OnInit {
+  @HostListener('window:resize', [])
+  onResize() {
+    this.checkScreenSize();
+  }
+
+  showDivider = true;
+
   constructor(public pedidosFormService: PedidosFormService) {}
 
   ngOnInit(): void {
     console.log(this.pedidosFormService.form);
+    this.checkScreenSize();
+  }
+
+  private checkScreenSize() {
+    this.showDivider = window.innerWidth >= 768;
+  }
+
+  getFormControl(controlName: string) {
+    return this.pedidosFormService.form.get(controlName);
   }
 
   onSubmit(): void {
@@ -23,10 +39,6 @@ export class PedidosFormComponent implements OnInit {
     } else {
       this.pedidosFormService.form.markAllAsTouched();
     }
-  }
-
-  getFormControl(controlName: string) {
-    return this.pedidosFormService.form.get(controlName)
   }
 
   get addressControls() {

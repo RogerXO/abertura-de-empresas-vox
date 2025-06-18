@@ -1,5 +1,4 @@
-input.ng-touched.ng-invalid,
-select.ng-touched.ng-invalid {
+input.ng-touched.ng-invalid{
   border: 1px solid #dc3545;
 }
 
@@ -10,6 +9,11 @@ select.ng-touched.ng-invalid {
 .form-control{
   border: 2px solid #c3cfda;
   border-radius: 0;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border: 2px solid #2C88D9;
 }
 
 .invalid-feedback {

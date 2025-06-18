@@ -8,6 +8,11 @@
   border-radius: 0;
 }
 
+.form-control:focus {
+  box-shadow: none;
+  border: 2px solid #2C88D9;
+}
+
 input.ng-touched.ng-invalid,
 select.ng-touched.ng-invalid {
   border: 1px solid #dc3545;
@@ -19,7 +24,7 @@ select.ng-touched.ng-invalid {
 }
 
 /* Divider */
-.divider-with-arrow {
+.divider {
   position: relative;
   flex-direction: column;
   gap: 12px;
@@ -28,16 +33,24 @@ select.ng-touched.ng-invalid {
 
 .vertical-line {
   width: 2px;
-  height: 40%;
+  height: 100%;
+  margin-bottom: 15px;
   background-color: #007bff;
 }
 
-.arrow-icon {
-  position: relative;
-  width: 10px;
-  height: 10px;
-  border: solid #007bff;
-  border-width: 3px 3px 0 0;
-  transform: rotate(45deg);
-  background-color: white;
+@media (max-width: 768px) {
+  .left-panel,
+  .right-panel {
+    height: 50%;
+  }
+
+  .left-panel {
+    border-bottom: 3px solid #007bff;
+    margin-bottom: 20px;
+    padding-bottom: 0px;
+  }
+
+  .right-panel {
+    padding-top: 30px;
+  }
 }

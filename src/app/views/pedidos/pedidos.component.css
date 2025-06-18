@@ -1,17 +1,8 @@
-.container-fluid {
-  padding: 0;
-  height: 100vh;
-}
 
-.row {
-  margin: 0;
-  height: 100%;
-}
 
 /* Left Panel Styles */
 .left-panel {
-  background-color: #f8f9fa;
-  padding: 20px;
+  padding: 40px;
   border-right: 3px solid #007bff;
   overflow-y: auto;
 }
@@ -22,12 +13,7 @@
 
 .company-card {
   background: white;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  border: 2px solid #C3CFDA;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -43,155 +29,9 @@
   box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
 }
 
-.company-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.avatar-container {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.avatar-icon {
-  font-size: 32px;
-  color: #6c757d;
-}
-
-.company-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.company-name {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 600;
-  color: #333;
-  line-height: 1.2;
-}
-
-.company-subtitle {
-  margin: 0;
-  font-size: 12px;
-  color: #6c757d;
-  line-height: 1.2;
-}
-
-.btn-visualizar {
-  background-color: #007bff;
-  border: none;
-  border-radius: 6px;
-  padding: 6px 12px;
-  font-size: 12px;
-  font-weight: 500;
-}
-
-.btn-visualizar:hover {
-  background-color: #0056b3;
-}
-
 /* Right Panel Styles */
 .right-panel {
-  background-color: white;
-  padding: 0;
   overflow-y: auto;
-}
-
-.details-container {
-  padding: 24px;
-  height: 100%;
-}
-
-.details-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 24px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid #e9ecef;
-}
-
-.details-title {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 500;
-  color: #6c757d;
-}
-
-.btn-editar {
-  background-color: #6c757d;
-  border: none;
-  border-radius: 6px;
-  padding: 8px 16px;
-  font-size: 12px;
-  font-weight: 500;
-  color: white;
-}
-
-.btn-editar:hover {
-  background-color: #545b62;
-  color: white;
-}
-
-.company-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 32px;
-}
-
-.company-avatar-large {
-  width: 60px;
-  height: 60px;
-  background-color: #f8f9fa;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 12px;
-}
-
-.company-avatar-large i {
-  font-size: 48px;
-  color: #6c757d;
-}
-
-.company-name-large {
-  margin: 0;
-  font-size: 16px;
-  font-weight: 500;
-  color: #333;
-}
-
-.company-details-section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.detail-row {
-  display: flex;
-  gap: 8px;
-  align-items: flex-start;
-}
-
-.detail-label {
-  font-weight: 600;
-  color: #333;
-  font-size: 14px;
-  min-width: 100px;
-  flex-shrink: 0;
-}
-
-.detail-value {
-  color: #6c757d;
-  font-size: 14px;
-  flex: 1;
 }
 
 /* Empty State */
@@ -217,12 +57,12 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .row {
+  /* .row {
     flex-direction: column;
-  }
+  } */
 
   .left-panel, .right-panel {
-    height: 50vh;
+    height: 50%;
   }
 
   .left-panel {

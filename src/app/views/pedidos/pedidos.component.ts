@@ -1,10 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Company } from '../../shared/models/company.models';
+import { CompanyCardComponent } from './components/company-card/company-card.component';
+import { CompanyDetailComponent } from "./components/company-detail/company-detail.component";
 
 @Component({
   selector: 'app-pedidos',
-  imports: [CommonModule],
+  imports: [CommonModule, CompanyCardComponent, CompanyDetailComponent],
   templateUrl: './pedidos.component.html',
   styleUrl: './pedidos.component.css',
 })
@@ -68,7 +70,7 @@ export class PedidosComponent {
     },
     {
       id: 4,
-      name: 'Fulano de tal',
+      name: 'Vox Tecnologia',
       email: 'contato@consultoria.com',
       phone: '(11) 66666-6666',
       address: 'Rua Augusta, 321 - São Paulo, SP',

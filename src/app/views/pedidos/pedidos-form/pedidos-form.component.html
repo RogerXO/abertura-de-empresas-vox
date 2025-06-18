@@ -4,7 +4,7 @@
   class="container"
 >
   <div class="row">
-    <!-- Coluna esquerda -->
+    <!-- Left Column -->
     <div class="col-md-5 left-panel">
       <h5 class="mb-4 form-title">Dados do solicitante</h5>
 
@@ -59,9 +59,7 @@
 
       <div class="mb-3">
         <label>Escolha sua entidade de registro*</label>
-        <div
-          *ngFor="let entity of ['Cartório', 'Junta Comercial', 'OAB', 'RFB']"
-        >
+        <div *ngFor="let entity of registrationEntitiesList">
           <input type="radio" [value]="entity" formControlName="entity" />
           {{ entity }}
         </div>
@@ -77,7 +75,7 @@
       </div>
     </div>
 
-    <!-- Divisor -->
+    <!-- Divider -->
     <div
       *ngIf="showDivider"
       class="col-md-1 d-none d-md-flex align-items-center justify-content-center"
@@ -85,14 +83,14 @@
       <div class="vertical-line"></div>
     </div>
 
-    <!-- Coluna direita -->
+    <!-- Right column -->
     <div class="col-md-6 d-flex flex-column">
       <h5 class="mb-4 form-title">Endereço da empresa</h5>
 
       <div [formGroupName]="'address'">
         <app-input
           label="CEP*"
-          placeholder="000000-00"
+          placeholder="000000-000"
           [formGroup]="addressControls"
           controlName="zipcode"
           [isInvalid]="
@@ -157,40 +155,7 @@
             "
           >
             <option value="" disabled selected>Selecione</option>
-            <option
-              *ngFor="
-                let uf of [
-                  'AC',
-                  'AL',
-                  'AM',
-                  'AP',
-                  'BA',
-                  'CE',
-                  'DF',
-                  'ES',
-                  'GO',
-                  'MA',
-                  'MG',
-                  'MS',
-                  'MT',
-                  'PA',
-                  'PB',
-                  'PE',
-                  'PI',
-                  'PR',
-                  'RJ',
-                  'RN',
-                  'RO',
-                  'RR',
-                  'RS',
-                  'SC',
-                  'SE',
-                  'SP',
-                  'TO'
-                ]
-              "
-              [value]="uf"
-            >
+            <option *ngFor="let uf of ufList" [value]="uf">
               {{ uf }}
             </option>
           </select>

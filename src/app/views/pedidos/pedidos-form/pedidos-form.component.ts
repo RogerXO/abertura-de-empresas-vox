@@ -3,6 +3,7 @@ import { PedidosFormService } from '../../../shared/services/pedidos-form.servic
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../../shared/components/input/input.component';
+import { ListsService } from '../../../shared/services/lists.service';
 
 @Component({
   selector: 'app-pedidos-form',
@@ -11,17 +12,26 @@ import { InputComponent } from '../../../shared/components/input/input.component
   styleUrl: './pedidos-form.component.css',
 })
 export class PedidosFormComponent implements OnInit {
+  showDivider = true;
+
+  ufList: string[] = [];
+  registrationEntitiesList: string[] = [];
+
+  constructor(
+    public pedidosFormService: PedidosFormService,
+    private listsService: ListsService
+  ) {}
+
   @HostListener('window:resize', [])
   onResize() {
     this.checkScreenSize();
   }
 
-  showDivider = true;
-
-  constructor(public pedidosFormService: PedidosFormService) {}
-
   ngOnInit(): void {
     this.checkScreenSize();
+    this.ufList = this.listsService.getUfList();
+    this.registrationEntitiesList =
+      this.listsService.getRegistrationEntitiesList();
   }
 
   private checkScreenSize() {

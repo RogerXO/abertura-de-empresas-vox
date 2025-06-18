@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Company } from '../../../../shared/models/company.models';
+import { Company } from '../../../../shared/models/company.model';
 import { CommonModule } from '@angular/common';
 
 @Component({

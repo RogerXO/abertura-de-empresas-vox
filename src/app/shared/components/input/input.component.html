@@ -1,0 +1,26 @@
+<ng-template [ngIf]="!formGroup && !controlName">
+  <div class="form-container">
+    <label>{{ label }}</label>
+    <input
+      [placeholder]="placeholder"
+      [type]="type"
+      class="form-control"
+      [class.is-invalid]="isInvalid"
+    />
+    <div class="invalid-feedback">{{ errorMessage }}</div>
+  </div>
+</ng-template>
+
+<ng-template [ngIf]="formGroup && controlName">
+  <div [formGroup]="formGroup" class="form-container">
+    <label>{{ label }}</label>
+    <input
+      [placeholder]="placeholder"
+      [type]="type"
+      [formControlName]="controlName"
+      class="form-control"
+      [class.is-invalid]="isInvalid"
+    />
+    <div class="invalid-feedback">{{ errorMessage }}</div>
+  </div>
+</ng-template>

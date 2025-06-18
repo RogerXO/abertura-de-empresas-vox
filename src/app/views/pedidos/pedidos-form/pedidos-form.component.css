@@ -1,0 +1,43 @@
+.form-title {
+  color: #788896;
+  font-weight: bold;
+}
+
+.form-control{
+  border: 2px solid #c3cfda;
+  border-radius: 0;
+}
+
+input.ng-touched.ng-invalid,
+select.ng-touched.ng-invalid {
+  border: 1px solid #dc3545;
+}
+
+.invalid-feedback {
+  color: #dc3545;
+  font-size: 0.875em;
+}
+
+/* Divider */
+.divider-with-arrow {
+  position: relative;
+  flex-direction: column;
+  gap: 12px;
+  height: 100%;
+}
+
+.vertical-line {
+  width: 2px;
+  height: 40%;
+  background-color: #007bff;
+}
+
+.arrow-icon {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  border: solid #007bff;
+  border-width: 3px 3px 0 0;
+  transform: rotate(45deg);
+  background-color: white;
+}

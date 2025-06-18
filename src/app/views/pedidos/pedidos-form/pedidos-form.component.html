@@ -1,0 +1,208 @@
+<form
+  [formGroup]="pedidosFormService.form"
+  (ngSubmit)="onSubmit()"
+  class="container"
+>
+  <div class="row">
+    <!-- Coluna esquerda -->
+    <div class="col-md-5">
+      <h5 class="mb-4 form-title">Dados do solicitante</h5>
+
+      <app-input
+        label="Responsável pela empresa*"
+        [formGroup]="pedidosFormService.form"
+        controlName="responsible"
+        [isInvalid]="
+          getFormControl('responsible')?.invalid &&
+          getFormControl('responsible')?.touched
+        "
+        errorMessage="Campo obrigatório."
+      ></app-input>
+
+      <app-input
+        label="CPF*"
+        [formGroup]="pedidosFormService.form"
+        controlName="cpf"
+        [isInvalid]="
+          getFormControl('cpf')?.invalid &&
+          getFormControl('cpf')?.touched
+        "
+        errorMessage="{{
+          getFormControl('cpf')?.hasError('pattern')
+            ? 'Formato inválido.'
+            : 'Campo obrigatório.'
+        }}"
+      ></app-input>
+
+      <app-input
+        label="Data nascimento*"
+        type="date"
+        [formGroup]="pedidosFormService.form"
+        controlName="birth"
+        [isInvalid]="
+          getFormControl('birth')?.invalid &&
+          getFormControl('birth')?.touched
+        "
+        errorMessage="Campo obrigatório."
+      ></app-input>
+
+      <h5 class="mb-3 mt-4">Dados da empresa</h5>
+
+      <app-input
+        label="Nome fantasia*"
+        [formGroup]="pedidosFormService.form"
+        controlName="name"
+        [isInvalid]="
+          getFormControl('name')?.invalid &&
+          getFormControl('name')?.touched
+        "
+        errorMessage="Campo obrigatório."
+      ></app-input>
+
+      <div class="mb-3">
+        <label>Escolha sua entidade de registro*</label>
+        <div
+          *ngFor="let entity of ['Cartório', 'Junta Comercial', 'OAB', 'RFB']"
+        >
+          <input type="radio" [value]="entity" formControlName="entity" />
+          {{ entity }}
+        </div>
+        <div
+          class="invalid-feedback d-block"
+          *ngIf="
+            getFormControl('entity')?.invalid &&
+            getFormControl('entity')?.touched
+          "
+        >
+          Selecione uma opção.
+        </div>
+      </div>
+    </div>
+
+    <!-- Divisor -->
+    <div
+      class="col-md-1 divider-with-arrow d-none d-md-flex align-items-center justify-content-center"
+    >
+      <div class="vertical-line top-line"></div>
+      <div class="arrow-icon"></div>
+      <div class="vertical-line bottom-line"></div>
+    </div>
+
+    <!-- Coluna direita -->
+    <div class="col-md-6">
+      <h5 class="mb-4 form-title">Endereço da empresa</h5>
+
+      <div [formGroupName]="'address'">
+        <app-input
+          label="CEP*"
+          [formGroup]="addressControls"
+          controlName="zipcode"
+          [isInvalid]="
+            getFormControl('address.zipcode')?.invalid &&
+            getFormControl('address.zipcode')?.touched
+          "
+          errorMessage="{{
+            getFormControl('address.zipcode')?.hasError('pattern')
+              ? 'Formato inválido.'
+              : 'Campo obrigatório.'
+          }}"
+        ></app-input>
+
+        <app-input
+          label="Endereço*"
+          [formGroup]="addressControls"
+          controlName="street"
+          [isInvalid]="
+            getFormControl('address.street')?.invalid &&
+            getFormControl('address.street')?.touched
+          "
+          errorMessage="Campo obrigatório."
+        ></app-input>
+
+        <app-input
+          label="Bairro*"
+          [formGroup]="addressControls"
+          controlName="neighborhood"
+          [isInvalid]="
+            getFormControl('address.neighborhood')?.invalid &&
+            getFormControl('address.neighborhood')?.touched
+          "
+          errorMessage="Campo obrigatório."
+        ></app-input>
+
+        <app-input
+          label="Complemento"
+          [formGroup]="addressControls"
+          controlName="complement"
+          [isInvalid]="false"
+        ></app-input>
+
+        <app-input
+          label="Cidade*"
+          [formGroup]="addressControls"
+          controlName="city"
+          [isInvalid]="
+            getFormControl('address.city')?.invalid &&
+            getFormControl('address.city')?.touched
+          "
+          errorMessage="Campo obrigatório."
+        ></app-input>
+
+        <div class="mb-3">
+          <label>Estado*</label>
+          <select
+            formControlName="state"
+            class="form-control"
+            [class.is-invalid]="
+              getFormControl('address.state')?.invalid &&
+              getFormControl('address.state')?.touched
+            "
+          >
+            <option value="" disabled selected>Selecione</option>
+            <option
+              *ngFor="
+                let uf of [
+                  'AC',
+                  'AL',
+                  'AM',
+                  'AP',
+                  'BA',
+                  'CE',
+                  'DF',
+                  'ES',
+                  'GO',
+                  'MA',
+                  'MG',
+                  'MS',
+                  'MT',
+                  'PA',
+                  'PB',
+                  'PE',
+                  'PI',
+                  'PR',
+                  'RJ',
+                  'RN',
+                  'RO',
+                  'RR',
+                  'RS',
+                  'SC',
+                  'SE',
+                  'SP',
+                  'TO'
+                ]
+              "
+              [value]="uf"
+            >
+              {{ uf }}
+            </option>
+          </select>
+          <div class="invalid-feedback">Campo obrigatório.</div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">
+        <i class="bi bi-send-fill me-1"></i> Enviar
+      </button>
+    </div>
+  </div>
+</form>

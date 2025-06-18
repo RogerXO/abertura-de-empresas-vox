@@ -21,7 +21,6 @@ export class PedidosFormComponent implements OnInit {
   constructor(public pedidosFormService: PedidosFormService) {}
 
   ngOnInit(): void {
-    console.log(this.pedidosFormService.form);
     this.checkScreenSize();
   }
 
@@ -33,7 +32,7 @@ export class PedidosFormComponent implements OnInit {
     return this.pedidosFormService.form.get(controlName);
   }
 
-  onSubmit(): void {
+  onSubmit() {
     if (this.pedidosFormService.form.valid) {
       this.pedidosFormService.submit();
     } else {

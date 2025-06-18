@@ -19,7 +19,6 @@ export class PedidosFormService {
     entity: ['', Validators.required],
     address: this.formBuilder.group({
       street: ['', Validators.required],
-      number: ['', Validators.required],
       neighborhood: ['', Validators.required],
       city: ['', Validators.required],
       zipcode: ['', [Validators.required, Validators.pattern(/^\d{5}-\d{3}$/)]],

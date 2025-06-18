@@ -17,3 +17,13 @@
 .header-text {
   color: #2c88d9;
 }
+
+.button {
+  font-size: 20px;
+  background-color: #2C88D9;
+  color: white;
+}
+
+.button:hover {
+  background-color: #007DDB;
+}

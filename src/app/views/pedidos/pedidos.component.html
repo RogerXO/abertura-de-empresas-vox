@@ -1,7 +1,7 @@
 <section class="container-fluid">
   <div class="row">
     <!-- Company List -->
-    <div class="col-md-6 left-panel">
+    <section class="col-md-6 left-panel">
       <div class="company-list d-flex flex-column">
         <div
           *ngFor="let company of companies"
@@ -12,13 +12,12 @@
           <app-company-card [company]="company" class="w-100"></app-company-card>
         </div>
       </div>
-    </div>
+    </section>
 
     <!-- Company Details -->
     <aside class="col-md-6 right-panel">
       <app-company-detail *ngIf="selectedCompany" [company]="selectedCompany"></app-company-detail>
 
-      <!-- Empty State -->
       <div class="empty-state" *ngIf="!selectedCompany">
         <div class="empty-icon">
           <i class="bi bi-arrow-left"></i>

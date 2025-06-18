@@ -2,8 +2,8 @@
 
 /* Left Panel Styles */
 .left-panel {
-  padding: 40px;
-  border-right: 3px solid #007bff;
+  padding: 0 40px;
+  border-right: 2px solid #007bff;
   overflow-y: auto;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .company-card:hover {
-  border-color: #007bff;
+  border-color: #007bffb7;
   box-shadow: 0 2px 8px rgba(0, 123, 255, 0.15);
 }
 
@@ -31,6 +31,7 @@
 
 /* Right Panel Styles */
 .right-panel {
+  padding: 0 40px;
   overflow-y: auto;
 }
 

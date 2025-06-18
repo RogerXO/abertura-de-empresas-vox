@@ -1,7 +1,7 @@
-<section class="container-fluid">
-  <div class="row">
+<section class="container-fluid h-100">
+  <div class="row position-relative h-100">
     <!-- Company List -->
-    <section class="col-md-6 left-panel">
+    <section class="col-md-5 left-panel">
       <div class="d-flex flex-column gap-3">
         <div
           *ngFor="let company of companies"
@@ -9,14 +9,29 @@
           [class.selected]="selectedCompany?.id === company.id"
           (click)="selectCompany(company)"
         >
-          <app-company-card [company]="company" class="w-100"></app-company-card>
+          <app-company-card
+            [company]="company"
+            class="w-100"
+          ></app-company-card>
         </div>
       </div>
     </section>
 
+    <!-- Divider  -->
+    <div
+      class="col-md-1 divider-with-arrow d-none d-md-flex flex-column align-items-center justify-content-center"
+    >
+      <div class="vertical-line top-line"></div>
+      <div class="arrow-icon"></div>
+      <div class="vertical-line bottom-line"></div>
+    </div>
+
     <!-- Company Details -->
     <aside class="col-md-6 right-panel">
-      <app-company-detail *ngIf="selectedCompany" [company]="selectedCompany"></app-company-detail>
+      <app-company-detail
+        *ngIf="selectedCompany"
+        [company]="selectedCompany"
+      ></app-company-detail>
 
       <div class="empty-state" *ngIf="!selectedCompany">
         <div class="empty-icon">

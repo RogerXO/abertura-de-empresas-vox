@@ -1,15 +1,12 @@
-
-
 /* Left Panel Styles */
 .left-panel {
   padding: 0 40px;
-  border-right: 2px solid #007bff;
   overflow-y: auto;
 }
 
 .company-card {
   background: white;
-  border: 2px solid #C3CFDA;
+  border: 2px solid #c3cfda;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -23,6 +20,35 @@
   border-color: #007bff;
   background-color: #f0f8ff;
   box-shadow: 0 2px 8px rgba(0, 123, 255, 0.2);
+}
+
+/* Divider */
+.divider-with-arrow {
+  position: relative;
+}
+
+.vertical-line {
+  width: 2px;
+  height: 100%;
+  background-color: #007bff;
+}
+
+.top-line {
+  margin-bottom: 40px;
+}
+
+.bottom-line {
+  margin-top: 40px;
+}
+
+.arrow-icon {
+  border: solid #007bff;
+  border-width: 2px 2px 0 0;
+  display: inline-block;
+  padding: 4px;
+  transform: rotate(45deg);
+  background-color: white;
+  z-index: 1;
 }
 
 /* Right Panel Styles */
@@ -57,7 +83,8 @@
     flex-direction: column;
   } */
 
-  .left-panel, .right-panel {
+  .left-panel,
+  .right-panel {
     height: 50%;
   }
 

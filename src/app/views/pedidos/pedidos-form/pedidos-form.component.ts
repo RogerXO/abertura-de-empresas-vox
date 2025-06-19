@@ -19,7 +19,7 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   registrationEntitiesList: string[] = [];
 
   constructor(
-    public pedidosFormService: EmpresasService,
+    public empresasService: EmpresasService,
     private _listsService: ListsService,
     private _activatedRouter: ActivatedRoute
   ) {}
@@ -37,14 +37,12 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.pedidosFormService.form.reset();
+    this.empresasService.form.reset();
   }
 
   getUfList() {
     this._listsService.getUfIBGEList().subscribe({
-      next: (res) => {
-        this.ufList = res.map((uf) => uf.sigla);
-      },
+      next: (res) => (this.ufList = res.map((uf) => uf.sigla)),
       error: (err) => console.error(err),
     });
   }
@@ -63,19 +61,28 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   }
 
   getFormControl(controlName: string) {
-    return this.pedidosFormService.form.get(controlName);
+    return this.empresasService.form.get(controlName);
   }
 
   onSubmit() {
-    if (this.pedidosFormService.form.valid) {
-      this.pedidosFormService.submit();
+    console.log(this.empresasService.form.valid, this.empresasService.form);
+    if (this.empresasService.form.valid) {
+      this.empresasService.submit();
     } else {
-      this.pedidosFormService.form.markAllAsTouched();
+      this.empresasService.form.markAllAsTouched();
     }
   }
 
+  get companyControls() {
+    return this.empresasService.form.controls.empresa;
+  }
+
   get addressControls() {
-    return this.pedidosFormService.form.controls.address;
+    return this.empresasService.form.controls.empresa.controls.endereco;
+  }
+
+  get applicantControls() {
+    return this.empresasService.form.controls.solicitante;
   }
 
   get id() {

@@ -13,21 +13,32 @@ export class EmpresasService extends ApiService {
   private formBuilder = inject(FormBuilder);
 
   form = this.formBuilder.group({
-    responsible: ['', Validators.required],
-    cpf: [
-      '',
-      [Validators.required, Validators.pattern(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)],
-    ],
-    birth: ['', Validators.required],
-    name: ['', Validators.required],
-    entity: ['', Validators.required],
-    address: this.formBuilder.group({
-      street: ['', Validators.required],
-      neighborhood: ['', Validators.required],
-      city: ['', Validators.required],
-      zipcode: ['', [Validators.required, Validators.pattern(/^\d{5}-\d{3}$/)]],
-      complement: [''],
-      state: ['', Validators.required],
+    solicitante: this.formBuilder.group({
+      ds_responsavel: ['', Validators.required],
+      nu_cpf: [
+        '',
+        [
+          Validators.required,
+          Validators.pattern(/^[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}$/),
+        ],
+      ],
+      date_nascimento: ['', Validators.required],
+    }),
+    empresa: this.formBuilder.group({
+      ds_nome_fantasia: ['', Validators.required],
+      co_entidade_registro: ['', Validators.required],
+      endereco: this.formBuilder.group({
+        co_cep: [
+          '',
+          [Validators.required, Validators.pattern(/^[0-9]{5}-[0-9]{3}$/)],
+        ],
+        ds_logradouro: ['', Validators.required],
+        co_numero: ['', Validators.required],
+        ds_complemento: [''],
+        ds_bairro: ['', Validators.required],
+        ds_municipio: ['', Validators.required],
+        co_uf: ['', Validators.required],
+      }),
     }),
   });
 
@@ -44,6 +55,7 @@ export class EmpresasService extends ApiService {
   }
 
   submit() {
+    console.log(this.form)
     sessionStorage.setItem('form', JSON.stringify(this.form.value));
     this._utils.showSuccessDialog().then((result) => {
       if (result.isConfirmed) {

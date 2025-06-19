@@ -1,5 +1,5 @@
 <form
-  [formGroup]="pedidosFormService.form"
+  [formGroup]="empresasService.form"
   (ngSubmit)="onSubmit()"
   class="container"
 >
@@ -10,11 +10,11 @@
 
       <app-input
         label="Responsável pela empresa*"
-        [formGroup]="pedidosFormService.form"
-        controlName="responsible"
+        [formGroup]="applicantControls"
+        [control]="applicantControls.controls.ds_responsavel"
         [isInvalid]="
-          getFormControl('responsible')?.invalid &&
-          getFormControl('responsible')?.touched
+          getFormControl('solicitante.ds_responsavel')?.invalid &&
+          getFormControl('solicitante.ds_responsavel')?.touched
         "
         errorMessage="Campo obrigatório."
       ></app-input>
@@ -22,13 +22,14 @@
       <app-input
         label="CPF*"
         placeholder="000.000.000-00"
-        [formGroup]="pedidosFormService.form"
-        controlName="cpf"
+        [formGroup]="applicantControls"
+        [control]="applicantControls.controls.nu_cpf"
         [isInvalid]="
-          getFormControl('cpf')?.invalid && getFormControl('cpf')?.touched
+          getFormControl('solicitante.nu_cpf')?.invalid &&
+          getFormControl('solicitante.nu_cpf')?.touched
         "
         errorMessage="{{
-          getFormControl('cpf')?.hasError('pattern')
+          getFormControl('solicitante.nu_cpf')?.hasError('pattern')
             ? 'Formato inválido.'
             : 'Campo obrigatório.'
         }}"
@@ -37,10 +38,11 @@
       <app-input
         label="Data nascimento*"
         type="date"
-        [formGroup]="pedidosFormService.form"
-        controlName="birth"
+        [formGroup]="applicantControls"
+        [control]="applicantControls.controls.date_nascimento"
         [isInvalid]="
-          getFormControl('birth')?.invalid && getFormControl('birth')?.touched
+          getFormControl('solicitante.date_nascimento')?.invalid &&
+          getFormControl('solicitante.date_nascimento')?.touched
         "
         errorMessage="Campo obrigatório."
       ></app-input>
@@ -49,25 +51,34 @@
 
       <app-input
         label="Nome fantasia*"
-        [formGroup]="pedidosFormService.form"
-        controlName="name"
+        [formGroup]="companyControls"
+        [control]="companyControls.controls.ds_nome_fantasia"
         [isInvalid]="
-          getFormControl('name')?.invalid && getFormControl('name')?.touched
+          getFormControl('empresa.ds_nome_fantasia')?.invalid &&
+          getFormControl('empresa.ds_nome_fantasia')?.touched
         "
         errorMessage="Campo obrigatório."
       ></app-input>
 
-      <div class="mb-3">
+      <div [formGroup]="companyControls" class="mb-3">
         <label>Escolha sua entidade de registro*</label>
-        <div *ngFor="let entity of registrationEntitiesList">
-          <input type="radio" [value]="entity" formControlName="entity" />
-          {{ entity }}
+        <div *ngFor="let entity of registrationEntitiesList" class="form-check">
+          <input
+            type="radio"
+            class="form-check-input"
+            [value]="entity"
+            formControlName="co_entidade_registro"
+            id="entidade-{{ entity }}"
+          />
+          <label class="form-check-label" [for]="'entidade-' + entity">
+            {{ entity }}
+          </label>
         </div>
         <div
           class="invalid-feedback d-block"
           *ngIf="
-            getFormControl('entity')?.invalid &&
-            getFormControl('entity')?.touched
+            getFormControl('empresa.co_entidade_registro')?.invalid &&
+            getFormControl('empresa.co_entidade_registro')?.touched
           "
         >
           Selecione uma opção.
@@ -87,18 +98,18 @@
     <div class="col-md-6 d-flex flex-column">
       <h5 class="mb-4 form-title">Endereço da empresa</h5>
 
-      <div [formGroupName]="'address'">
+      <div [formGroup]="addressControls">
         <app-input
           label="CEP*"
           placeholder="000000-000"
           [formGroup]="addressControls"
-          controlName="zipcode"
+          [control]="addressControls.controls.co_cep"
           [isInvalid]="
-            getFormControl('address.zipcode')?.invalid &&
-            getFormControl('address.zipcode')?.touched
+            getFormControl('empresa.endereco.co_cep')?.invalid &&
+            getFormControl('empresa.endereco.co_cep')?.touched
           "
           errorMessage="{{
-            getFormControl('address.zipcode')?.hasError('pattern')
+            getFormControl('empresa.endereco.co_cep')?.hasError('pattern')
               ? 'Formato inválido.'
               : 'Campo obrigatório.'
           }}"
@@ -107,10 +118,21 @@
         <app-input
           label="Endereço*"
           [formGroup]="addressControls"
-          controlName="street"
+          [control]="addressControls.controls.ds_logradouro"
           [isInvalid]="
-            getFormControl('address.street')?.invalid &&
-            getFormControl('address.street')?.touched
+            getFormControl('empresa.endereco.ds_logradouro')?.invalid &&
+            getFormControl('empresa.endereco.ds_logradouro')?.touched
+          "
+          errorMessage="Campo obrigatório."
+        ></app-input>
+
+        <app-input
+          label="Número*"
+          [formGroup]="addressControls"
+          [control]="addressControls.controls.co_numero"
+          [isInvalid]="
+            getFormControl('empresa.endereco.co_numero')?.invalid &&
+            getFormControl('empresa.endereco.co_numero')?.touched
           "
           errorMessage="Campo obrigatório."
         ></app-input>
@@ -118,10 +140,10 @@
         <app-input
           label="Bairro*"
           [formGroup]="addressControls"
-          controlName="neighborhood"
+          [control]="addressControls.controls.ds_bairro"
           [isInvalid]="
-            getFormControl('address.neighborhood')?.invalid &&
-            getFormControl('address.neighborhood')?.touched
+            getFormControl('empresa.endereco.ds_bairro')?.invalid &&
+            getFormControl('empresa.endereco.ds_bairro')?.touched
           "
           errorMessage="Campo obrigatório."
         ></app-input>
@@ -129,29 +151,29 @@
         <app-input
           label="Complemento"
           [formGroup]="addressControls"
-          controlName="complement"
+          [control]="addressControls.controls.ds_complemento"
           [isInvalid]="false"
         ></app-input>
 
         <app-input
           label="Cidade*"
           [formGroup]="addressControls"
-          controlName="city"
+          [control]="addressControls.controls.ds_municipio"
           [isInvalid]="
-            getFormControl('address.city')?.invalid &&
-            getFormControl('address.city')?.touched
+            getFormControl('empresa.endereco.ds_municipio')?.invalid &&
+            getFormControl('empresa.endereco.ds_municipio')?.touched
           "
           errorMessage="Campo obrigatório."
         ></app-input>
 
-        <div class="mb-3">
+        <div [formGroup]="addressControls" class="mb-3">
           <label>Estado*</label>
           <select
-            formControlName="state"
+            [formControl]="addressControls.controls.co_uf"
             class="form-control"
             [class.is-invalid]="
-              getFormControl('address.state')?.invalid &&
-              getFormControl('address.state')?.touched
+              getFormControl('empresa.endereco.co_uf')?.invalid &&
+              getFormControl('empresa.endereco.co_uf')?.touched
             "
           >
             <option value="" disabled selected>Selecione</option>

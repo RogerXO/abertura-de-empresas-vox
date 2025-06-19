@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
-import { FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
@@ -13,7 +13,7 @@ export class InputComponent {
   @Input() placeholder = "";
   @Input() type = 'text';
   @Input() formGroup?: FormGroup
-  @Input() controlName: string | null = null
+  @Input() control?: FormControl
   @Input() isInvalid: boolean | undefined = false;
   @Input() errorMessage = 'Campo obrigatório.';
 }

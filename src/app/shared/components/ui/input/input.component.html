@@ -1,4 +1,4 @@
-<ng-template [ngIf]="!formGroup && !controlName">
+<ng-template [ngIf]="!formGroup">
   <div class="form-container">
     <label>{{ label }}</label>
     <input
@@ -11,13 +11,13 @@
   </div>
 </ng-template>
 
-<ng-template [ngIf]="formGroup && controlName">
+<ng-template [ngIf]="formGroup && control">
   <div [formGroup]="formGroup" class="form-container">
     <label>{{ label }}</label>
     <input
       [placeholder]="placeholder"
       [type]="type"
-      [formControlName]="controlName"
+      [formControl]="control"
       class="form-control"
       [class.is-invalid]="isInvalid"
     />

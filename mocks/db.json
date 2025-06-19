@@ -19,7 +19,7 @@
           "co_uf": "29"
         }
       },
-      "id": 1
+      "id": "1"
     },
     {
       "solicitante": {
@@ -40,25 +40,50 @@
           "co_uf": "28"
         }
       },
-      "id": 2
+      "id": "2"
+    },
+    {
+      "id": "14f7",
+      "solicitante": {
+        "ds_responsavel": "R",
+        "nu_cpf": "000.000.000-00",
+        "date_nascimento": "2025-06-10"
+      },
+      "empresa": {
+        "ds_nome_fantasia": "Roger Xavier Oliveira",
+        "co_entidade_registro": "Cartório",
+        "endereco": {
+          "co_cep": "31744-305",
+          "ds_logradouro": "Rua dos Bacuraus",
+          "co_numero": "285",
+          "ds_complemento": "",
+          "ds_bairro": "Vila Cloris",
+          "ds_municipio": "Belo Horizonte",
+          "co_uf": "MG"
+        }
+      }
     }
   ],
   "entidade-registro": [
     {
       "key": 104305,
-      "value": "Cartório"
+      "value": "Cartório",
+      "id": "c56a"
     },
     {
       "key": 104306,
-      "value": "Junta Comercial"
+      "value": "Junta Comercial",
+      "id": "343e"
     },
     {
       "key": 104308,
-      "value": "OAB"
+      "value": "OAB",
+      "id": "0372"
     },
     {
       "key": 104309,
-      "value": "RFB"
+      "value": "RFB",
+      "id": "78d1"
     }
   ]
 }

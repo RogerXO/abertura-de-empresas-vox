@@ -42,11 +42,7 @@ export class EmpresasService extends ApiService {
     }),
   });
 
-  constructor(
-    private _utils: UtilsService,
-    private _router: Router,
-    protected http: HttpClient
-  ) {
+  constructor(protected http: HttpClient) {
     super(http);
   }
 
@@ -54,13 +50,7 @@ export class EmpresasService extends ApiService {
     return this.list<Company[]>('empresas');
   }
 
-  submit() {
-    console.log(this.form)
-    sessionStorage.setItem('form', JSON.stringify(this.form.value));
-    this._utils.showSuccessDialog().then((result) => {
-      if (result.isConfirmed) {
-        this._router.navigate(['pedidos']);
-      }
-    });
+  submit(id = '0') {
+    return this.saveData('empresas', id, this.form.value);
   }
 }

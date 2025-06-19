@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { take } from 'rxjs/operators';
+import { Company } from '../models/company.model';
 
 @Injectable({
   providedIn: 'root',
@@ -37,9 +38,9 @@ export class ApiService {
       .pipe(take(1));
   }
 
-  saveData<T>(path: string, data: T, id: string | number) {
-    if (id != 0) {
-      return this.put<T>(path, id, data);
+  saveData(path: string, id: string, data: any) {
+    if (id && id !== '0') {
+      return this.put(path, id, data);
     } else {
       return this.post(path, data);
     }

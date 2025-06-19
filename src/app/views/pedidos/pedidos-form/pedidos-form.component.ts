@@ -5,6 +5,8 @@ import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../../shared/components/ui/input/input.component';
 import { ListsService } from '../../../shared/services/lists.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UtilsService } from '../../../shared/services/utils.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-pedidos-form',
@@ -21,7 +23,10 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   constructor(
     public empresasService: EmpresasService,
     private _listsService: ListsService,
-    private _activatedRouter: ActivatedRoute
+    private _activatedRouter: ActivatedRoute,
+    private _utils: UtilsService,
+    private _router: Router,
+    private spinner: NgxSpinnerService
   ) {}
 
   @HostListener('window:resize', [])
@@ -65,9 +70,21 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(this.empresasService.form.valid, this.empresasService.form);
+    this.spinner.show();
     if (this.empresasService.form.valid) {
-      this.empresasService.submit();
+      this.empresasService.submit(this.id || '').subscribe({
+        next: () => {
+          this.spinner.hide();
+          this._utils.showSuccessDialog().then((result) => {
+            if (result.isConfirmed) {
+              this._router.navigate(['pedidos']);
+            }
+          });
+        },
+        error: (err) => {
+          console.error(err);
+        },
+      });
     } else {
       this.empresasService.form.markAllAsTouched();
     }

@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { PedidosFormService } from '../../../shared/services/pedidos-form.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { InputComponent } from '../../../shared/components/input/input.component';
+import { InputComponent } from '../../../shared/components/ui/input/input.component';
 import { ListsService } from '../../../shared/services/lists.service';
 
 @Component({

@@ -4,6 +4,7 @@ import { UtilsService } from './utils.service';
 import { Router } from '@angular/router';
 import { ApiService } from './api.service';
 import { HttpClient } from '@angular/common/http';
+import { Company } from '../models/company.model';
 
 @Injectable({
   providedIn: 'root',
@@ -39,7 +40,7 @@ export class EmpresasService extends ApiService {
   }
 
   getList() {
-    return this.list('empresas');
+    return this.list<Company[]>('empresas');
   }
 
   submit() {

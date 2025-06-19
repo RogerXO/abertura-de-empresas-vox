@@ -41,7 +41,7 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   }
 
   getUfList() {
-    this._listsService.getUfList().subscribe({
+    this._listsService.getUfIBGEList().subscribe({
       next: (res) => {
         this.ufList = res.map((uf) => uf.sigla);
       },

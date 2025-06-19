@@ -10,7 +10,7 @@ import { environment } from '../../../environments/environment';
 export class ListsService {
   constructor(private _apiService: ApiService) {}
 
-  getUfList() {
+  getUfIBGEList() {
     return this._apiService.fullUrlGet<UF[]>(
       'https://servicodados.ibge.gov.br/api/v1/localidades/estados/'
     );

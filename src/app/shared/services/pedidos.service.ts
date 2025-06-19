@@ -1,13 +1,12 @@
 import { inject, Injectable } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { of } from 'rxjs';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UtilsService } from './utils.service';
 import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PedidosFormService {
+export class PedidosService {
   private formBuilder = inject(FormBuilder);
 
   form = this.formBuilder.group({

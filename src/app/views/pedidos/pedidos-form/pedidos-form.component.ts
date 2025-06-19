@@ -1,5 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { PedidosFormService } from '../../../shared/services/pedidos-form.service';
+import { PedidosService } from '../../../shared/services/pedidos.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../../shared/components/ui/input/input.component';
@@ -18,7 +18,7 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   registrationEntitiesList: string[] = [];
 
   constructor(
-    public pedidosFormService: PedidosFormService,
+    public pedidosFormService: PedidosService,
     private listsService: ListsService
   ) {}
 
@@ -29,13 +29,31 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.checkScreenSize();
-    this.ufList = this.listsService.getUfList();
-    this.registrationEntitiesList =
-      this.listsService.getRegistrationEntitiesList();
+
+    this.getUfList();
+    this.getRegistrationEntitiesList();
   }
 
   ngOnDestroy() {
-    this.pedidosFormService.form.reset()
+    this.pedidosFormService.form.reset();
+  }
+
+  getUfList() {
+    this.listsService.getUfList().subscribe({
+      next: (res) => {
+        this.ufList = res.map((uf) => uf.sigla);
+      },
+      error: (err) => console.error(err),
+    });
+  }
+
+  getRegistrationEntitiesList() {
+    this.listsService.getRegistrationEntitiesList().subscribe({
+      next: (res) => {
+        this.registrationEntitiesList = res.map((item) => item.value);
+      },
+      error: (err) => console.error(err),
+    });
   }
 
   private checkScreenSize() {

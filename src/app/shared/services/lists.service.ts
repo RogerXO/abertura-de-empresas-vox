@@ -1,48 +1,26 @@
 import { Injectable } from '@angular/core';
-
-const ufList = [
-  'AC',
-  'AL',
-  'AM',
-  'AP',
-  'BA',
-  'CE',
-  'DF',
-  'ES',
-  'GO',
-  'MA',
-  'MG',
-  'MS',
-  'MT',
-  'PA',
-  'PB',
-  'PE',
-  'PI',
-  'PR',
-  'RJ',
-  'RN',
-  'RO',
-  'RR',
-  'RS',
-  'SC',
-  'SE',
-  'SP',
-  'TO',
-];
-
-const registrationEntities = ['Cartório', 'Junta Comercial', 'OAB', 'RFB'];
+import { take } from 'rxjs/operators';
+import { RegistrationEntity, UF } from '../models/lists.model';
+import { ApiService } from './api.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ListsService {
-  constructor() {}
+  constructor(private _apiService: ApiService) {}
 
   getUfList() {
-    return ufList;
+    return this._apiService
+      .getPath<UF[]>(
+        'https://servicodados.ibge.gov.br/api/v1/localidades/estados/'
+      )
+      .pipe(take(1));
   }
 
   getRegistrationEntitiesList() {
-    return registrationEntities;
+    return this._apiService.getPath<RegistrationEntity[]>(
+      `${environment.urlApi}/entidade-registro`
+    );
   }
 }

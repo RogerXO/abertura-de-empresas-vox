@@ -7,7 +7,7 @@
     </a>
     <p class="header-text h2 mb-0">Pedidos de Abertura da empresa</p>
   </div>
-  <button (click)="addRequest()" class="btn button d-flex align-items-center gap-2">
+  <button *ngIf="showButton" (click)="addRequest()" class="btn button d-flex align-items-center gap-2">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="22"

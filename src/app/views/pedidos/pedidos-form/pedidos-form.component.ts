@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { PedidosFormService } from '../../../shared/services/pedidos-form.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -11,7 +11,7 @@ import { ListsService } from '../../../shared/services/lists.service';
   templateUrl: './pedidos-form.component.html',
   styleUrl: './pedidos-form.component.css',
 })
-export class PedidosFormComponent implements OnInit {
+export class PedidosFormComponent implements OnInit, OnDestroy {
   showDivider = true;
 
   ufList: string[] = [];
@@ -32,6 +32,10 @@ export class PedidosFormComponent implements OnInit {
     this.ufList = this.listsService.getUfList();
     this.registrationEntitiesList =
       this.listsService.getRegistrationEntitiesList();
+  }
+
+  ngOnDestroy() {
+    this.pedidosFormService.form.reset()
   }
 
   private checkScreenSize() {

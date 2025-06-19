@@ -1,7 +1,7 @@
 <section class="container-fluid h-100">
   <div class="row position-relative h-100">
     <!-- Company List -->
-    <section class="col-md-5 left-panel">
+    <section class="col-md-6 left-panel">
       <div class="d-flex flex-column gap-3">
         <div
           *ngFor="let company of companies"
@@ -27,7 +27,7 @@
     </div>
 
     <!-- Company Details -->
-    <aside class="col-md-6 right-panel">
+    <aside class="col-md-5 right-panel">
       <app-company-detail
         *ngIf="selectedCompany"
         [company]="selectedCompany"

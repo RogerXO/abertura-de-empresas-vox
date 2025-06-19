@@ -4,10 +4,16 @@ import { Company } from '../../shared/models/company.model';
 import { CompanyCardComponent } from './components/company-card/company-card.component';
 import { CompanyDetailComponent } from './components/company-detail/company-detail.component';
 import { EmpresasService } from '../../shared/services/empresas.service';
+import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-pedidos',
-  imports: [CommonModule, CompanyCardComponent, CompanyDetailComponent],
+  imports: [
+    CommonModule,
+    CompanyCardComponent,
+    CompanyDetailComponent,
+    NgxSpinnerModule,
+  ],
   templateUrl: './pedidos.component.html',
   styleUrl: './pedidos.component.css',
 })
@@ -85,10 +91,13 @@ export class PedidosComponent implements OnInit {
     },
   ];
 
-  constructor(public empresasService: EmpresasService) {}
+  constructor(
+    public empresasService: EmpresasService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit() {
-    
+    this.spinner.show();
   }
 
   selectCompany(company: Company) {

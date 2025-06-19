@@ -1,5 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { PedidosService } from '../../../shared/services/pedidos.service';
+import { EmpresasService } from '../../../shared/services/empresas.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../../shared/components/ui/input/input.component';
@@ -19,7 +19,7 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   registrationEntitiesList: string[] = [];
 
   constructor(
-    public pedidosFormService: PedidosService,
+    public pedidosFormService: EmpresasService,
     private _listsService: ListsService,
     private _activatedRouter: ActivatedRoute
   ) {}
@@ -79,6 +79,6 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   }
 
   get id() {
-    return this._activatedRouter.snapshot.paramMap.get("id")
+    return this._activatedRouter.snapshot.paramMap.get('id');
   }
 }

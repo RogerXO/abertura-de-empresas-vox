@@ -9,31 +9,31 @@ import { take } from 'rxjs/operators';
 export class ApiService {
   constructor(private _http: HttpClient) {}
 
-  getPath<T>(path: string) {
+  fullUrlGet<T>(path: string) {
     return this._http.get<T>(`${path}`).pipe(take(1));
   }
 
-  getList<T>(path: string) {
-    return this._http.get<T>(`${environment.urlApi}/${path}`).pipe(take(1));
+  list<T>(path: string) {
+    return this._http.get<T>(`${environment.urlApi}${path}`).pipe(take(1));
   }
 
   getById<T>(path: string, id: string | number) {
     return this._http
-      .get<T>(`${environment.urlApi}/${path}/${id}`)
+      .get<T>(`${environment.urlApi}${path}/${id}`)
       .pipe(take(1));
   }
 
   post<T>(path: string, data: T) {
-    return this._http.post(`${environment.urlApi}/${path}`, data).pipe(take(1));
+    return this._http.post(`${environment.urlApi}${path}`, data).pipe(take(1));
   }
 
   put<T>(path: string, id: string | number, data: T) {
-    return this._http.put(`${environment.urlApi}/${path}/${id}`, data);
+    return this._http.put(`${environment.urlApi}${path}/${id}`, data);
   }
 
   delete(path: string, id: string | number) {
     return this._http
-      .delete(`${environment.urlApi}/${path}/${id}`)
+      .delete(`${environment.urlApi}${path}/${id}`)
       .pipe(take(1));
   }
 

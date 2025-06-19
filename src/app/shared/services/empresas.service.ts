@@ -2,11 +2,13 @@ import { inject, Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UtilsService } from './utils.service';
 import { Router } from '@angular/router';
+import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PedidosService {
+export class EmpresasService extends ApiService {
   private formBuilder = inject(FormBuilder);
 
   form = this.formBuilder.group({
@@ -28,7 +30,17 @@ export class PedidosService {
     }),
   });
 
-  constructor(private _utils: UtilsService, private _router: Router) {}
+  constructor(
+    private _utils: UtilsService,
+    private _router: Router,
+    protected http: HttpClient
+  ) {
+    super(http);
+  }
+
+  getList() {
+    return this.list('empresas');
+  }
 
   submit() {
     sessionStorage.setItem('form', JSON.stringify(this.form.value));

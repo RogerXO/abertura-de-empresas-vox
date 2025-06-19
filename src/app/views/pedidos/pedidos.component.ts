@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Company } from '../../shared/models/company.model';
 import { CompanyCardComponent } from './components/company-card/company-card.component';
 import { CompanyDetailComponent } from './components/company-detail/company-detail.component';
+import { EmpresasService } from '../../shared/services/empresas.service';
 
 @Component({
   selector: 'app-pedidos',
@@ -10,7 +11,7 @@ import { CompanyDetailComponent } from './components/company-detail/company-deta
   templateUrl: './pedidos.component.html',
   styleUrl: './pedidos.component.css',
 })
-export class PedidosComponent {
+export class PedidosComponent implements OnInit {
   selectedCompany: Company | null = null;
 
   companies: Company[] = [
@@ -83,6 +84,12 @@ export class PedidosComponent {
       },
     },
   ];
+
+  constructor(public empresasService: EmpresasService) {}
+
+  ngOnInit() {
+    
+  }
 
   selectCompany(company: Company) {
     this.selectedCompany = company;

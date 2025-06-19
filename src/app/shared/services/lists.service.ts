@@ -11,16 +11,12 @@ export class ListsService {
   constructor(private _apiService: ApiService) {}
 
   getUfList() {
-    return this._apiService
-      .getPath<UF[]>(
-        'https://servicodados.ibge.gov.br/api/v1/localidades/estados/'
-      )
-      .pipe(take(1));
+    return this._apiService.fullUrlGet<UF[]>(
+      'https://servicodados.ibge.gov.br/api/v1/localidades/estados/'
+    );
   }
 
   getRegistrationEntitiesList() {
-    return this._apiService.getPath<RegistrationEntity[]>(
-      `${environment.urlApi}/entidade-registro`
-    );
+    return this._apiService.list<RegistrationEntity[]>('entidade-registro');
   }
 }

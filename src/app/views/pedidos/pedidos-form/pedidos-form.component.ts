@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../../shared/components/ui/input/input.component';
 import { ListsService } from '../../../shared/services/lists.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-pedidos-form',
@@ -19,7 +20,8 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
 
   constructor(
     public pedidosFormService: PedidosService,
-    private listsService: ListsService
+    private _listsService: ListsService,
+    private _activatedRouter: ActivatedRoute
   ) {}
 
   @HostListener('window:resize', [])
@@ -39,7 +41,7 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   }
 
   getUfList() {
-    this.listsService.getUfList().subscribe({
+    this._listsService.getUfList().subscribe({
       next: (res) => {
         this.ufList = res.map((uf) => uf.sigla);
       },
@@ -48,7 +50,7 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   }
 
   getRegistrationEntitiesList() {
-    this.listsService.getRegistrationEntitiesList().subscribe({
+    this._listsService.getRegistrationEntitiesList().subscribe({
       next: (res) => {
         this.registrationEntitiesList = res.map((item) => item.value);
       },
@@ -74,5 +76,9 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
 
   get addressControls() {
     return this.pedidosFormService.form.controls.address;
+  }
+
+  get id() {
+    return this._activatedRouter.snapshot.paramMap.get("id")
   }
 }

@@ -5,7 +5,7 @@
     <a href="javscript:" [routerLink]="['/pedidos']">
       <img src="/assets/logo-rm-bg.png" alt="Logo" class="logo" />
     </a>
-    <p class="header-text h2 mb-0">Pedidos de Abertura da empresa</p>
+    <p class="header-text h2 mb-0">{{cardTitle}}</p>
   </div>
   <button *ngIf="showButton" (click)="addRequest()" class="btn button d-flex align-items-center gap-2">
     <svg

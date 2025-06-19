@@ -19,4 +19,12 @@ export class HeaderComponent {
   get showButton() {
     return this._router.url === "/pedidos"
   }
+
+  get isEdit() {
+    return this._router.url.includes("editar")
+  }
+
+  get cardTitle() {
+    return this.isEdit ? "Editar Solicitação de Abertura de Empresa" : "Solicitar Abertura de empresa"
+  }
 }

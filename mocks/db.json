@@ -3,14 +3,14 @@
     {
       "solicitante": {
         "ds_responsavel": "Catarina Ester da Cruz",
-        "nu_cpf": "83812080176",
+        "nu_cpf": "838.120.801-76",
         "date_nascimento": "1984-04-20"
       },
       "empresa": {
         "ds_nome_fantasia": "Diogo e Marcelo Filmagens Ltda",
         "co_entidade_registro": 104306,
         "endereco": {
-          "co_cep": 14022094,
+          "co_cep": "14022-094",
           "ds_logradouro": "Rua Alcino Jacinto Ramos",
           "co_numero": "233",
           "ds_complemento": null,
@@ -24,14 +24,14 @@
     {
       "solicitante": {
         "ds_responsavel": "Ryan Vinicius Nicolas Almeida",
-        "nu_cpf": "02494725976",
+        "nu_cpf": "024.947.259-76",
         "date_nascimento": "1990-09-30"
       },
       "empresa": {
         "ds_nome_fantasia": "Isabela e Benício Transportes Ltda",
         "co_entidade_registro": 104308,
         "endereco": {
-          "co_cep": 14022094,
+          "co_cep": "14022-094",
           "ds_logradouro": "Rua Francisco Nunes Villela",
           "co_numero": "233",
           "ds_complemento": "Apt 304",
@@ -58,7 +58,7 @@
           "ds_complemento": "Sala 105",
           "ds_bairro": "Savassi",
           "ds_municipio": "Belo Horizonte",
-          "co_uf": "MG"
+          "co_uf": "31"
         }
       },
       "id": "14f7"
@@ -79,7 +79,7 @@
           "ds_complemento": "",
           "ds_bairro": "Lourdes",
           "ds_municipio": "Belo Horizonte",
-          "co_uf": "MG"
+          "co_uf": "31"
         }
       },
       "id": "d148"
@@ -101,7 +101,7 @@
           "ds_complemento": null,
           "ds_bairro": "Jardim Primavera",
           "ds_municipio": "João Pessoa",
-          "co_uf": "PB"
+          "co_uf": "25"
         }
       }
     },
@@ -122,7 +122,7 @@
           "ds_complemento": null,
           "ds_bairro": "Floramar",
           "ds_municipio": "Belo Horizonte",
-          "co_uf": "MG"
+          "co_uf": "31"
         }
       }
     },
@@ -143,7 +143,7 @@
           "ds_complemento": null,
           "ds_bairro": "Vila Cloris",
           "ds_municipio": "Belo Horizonte",
-          "co_uf": "MG"
+          "co_uf": "31"
         }
       }
     }

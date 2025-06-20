@@ -8,7 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UtilsService } from '../../../shared/services/utils.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Company } from '../../../shared/models/company.model';
-import { RegistrationEntity } from '../../../shared/models/lists.model';
+import { RegistrationEntity, UF } from '../../../shared/models/lists.model';
 
 @Component({
   selector: 'app-pedidos-form',
@@ -19,7 +19,7 @@ import { RegistrationEntity } from '../../../shared/models/lists.model';
 export class PedidosFormComponent implements OnInit, OnDestroy {
   showDivider = true;
 
-  ufList: string[] = [];
+  ufList: UF[] = [];
   registrationEntitiesList: RegistrationEntity[] = [];
 
   constructor(
@@ -57,8 +57,8 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   getUfList() {
     this._listsService.getUfIBGEList().subscribe({
       next: (res) => {
-        this.ufList = res.map((uf) => uf.sigla);
-        this.ufList.sort((a, b) => a.localeCompare(b));
+        this.ufList = res;
+        this.ufList.sort((a, b) => a.sigla.localeCompare(b.sigla));
       },
       error: (err) => console.error(err),
     });

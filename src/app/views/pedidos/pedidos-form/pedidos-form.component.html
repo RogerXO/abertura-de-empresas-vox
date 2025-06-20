@@ -179,8 +179,8 @@
             "
           >
             <option value="" disabled selected>Selecione</option>
-            <option *ngFor="let uf of ufList" [value]="uf">
-              {{ uf }}
+            <option *ngFor="let uf of ufList" [value]="uf.id">
+              {{ uf.sigla }}
             </option>
           </select>
           <div class="invalid-feedback">Campo obrigatório.</div>

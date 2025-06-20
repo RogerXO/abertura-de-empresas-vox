@@ -9,17 +9,17 @@ import { finalize } from 'rxjs/operators';
 import { UtilsService } from '../../shared/services/utils.service';
 
 @Component({
-  selector: 'app-pedidos',
+  selector: 'app-solicitations',
   imports: [
     CommonModule,
     CompanyCardComponent,
     CompanyDetailComponent,
     NgxSpinnerModule,
   ],
-  templateUrl: './pedidos.component.html',
-  styleUrl: './pedidos.component.css',
+  templateUrl: './solicitations.component.html',
+  styleUrl: './solicitations.component.css'
 })
-export class PedidosComponent implements OnInit {
+export class SolicitationsComponent implements OnInit {
   selectedCompany: Company | null = null;
 
   companies: Company[] = [];

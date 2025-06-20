@@ -9,14 +9,15 @@ import { UtilsService } from '../../../shared/services/utils.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Company } from '../../../shared/models/company.model';
 import { RegistrationEntity, UF } from '../../../shared/models/lists.model';
+import { finalize } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-pedidos-form',
+  selector: 'app-solicitation-form',
   imports: [ReactiveFormsModule, CommonModule, InputComponent],
-  templateUrl: './pedidos-form.component.html',
-  styleUrl: './pedidos-form.component.css',
+  templateUrl: './solicitation-form.component.html',
+  styleUrl: './solicitation-form.component.css',
 })
-export class PedidosFormComponent implements OnInit, OnDestroy {
+export class SolicitationFormComponent implements OnInit, OnDestroy {
   showDivider = true;
 
   ufList: UF[] = [];
@@ -38,12 +39,13 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.spinner.show();
+
     this.checkScreenSize();
 
     this.getUfList();
     this.getRegistrationEntitiesList();
 
-    this.loadData();
+    this.loadFormData();
   }
 
   ngOnDestroy() {
@@ -55,40 +57,53 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   }
 
   getUfList() {
-    this._listsService.getUfIBGEList().subscribe({
-      next: (res) => {
-        this.ufList = res;
-        this.ufList.sort((a, b) => a.sigla.localeCompare(b.sigla));
-      },
-      error: (err) => {
-        console.error(err);
-        this._utils.showErrorToastDialog('os estados');
-      },
-    });
+    this.spinner.show();
+
+    this._listsService
+      .getUfIBGEList()
+      .pipe(finalize(() => this.spinner.hide()))
+      .subscribe({
+        next: (res) => {
+          this.ufList = res;
+          this.ufList.sort((a, b) => a.sigla.localeCompare(b.sigla));
+        },
+        error: (err) => {
+          console.error(err);
+          this._utils.showErrorToastDialog('os estados');
+        },
+      });
   }
 
   getRegistrationEntitiesList() {
-    this._listsService.getRegistrationEntitiesList().subscribe({
-      next: (res) => (this.registrationEntitiesList = res),
-      error: (err) => {
-        console.error(err);
-        this._utils.showErrorToastDialog('as entidades de registro');
-      },
-    });
-  }
+    this.spinner.show();
 
-  loadData() {
-    if (this.id) {
-      this.empresasService.getById<Company>('empresas', this.id).subscribe({
-        next: (res) => this.empresasService.setForm(res),
+    this._listsService
+      .getRegistrationEntitiesList()
+      .pipe(finalize(() => this.spinner.hide()))
+      .subscribe({
+        next: (res) => (this.registrationEntitiesList = res),
         error: (err) => {
           console.error(err);
-          this._utils.showErrorToastDialog('os dados');
+          this._utils.showErrorToastDialog('as entidades de registro');
         },
       });
-    }
+  }
 
-    this.spinner.hide();
+  loadFormData() {
+    if (this.id) {
+      this.spinner.show();
+
+      this.empresasService
+        .getById<Company>('empresas', this.id)
+        .pipe(finalize(() => this.spinner.hide()))
+        .subscribe({
+          next: (res) => this.empresasService.setForm(res),
+          error: (err) => {
+            console.error(err);
+            this._utils.showErrorToastDialog('os dados');
+          },
+        });
+    }
   }
 
   getFormControl(controlName: string) {

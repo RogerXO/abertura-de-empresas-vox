@@ -2,7 +2,16 @@
   <div class="row position-relative h-100">
     <!-- Company List -->
     <section class="col-md-6 overflow-auto left-panel">
-      <div class="d-flex flex-column gap-3">
+      <div
+        *ngIf="!companies || companies.length === 0"
+        class="d-flex flex-column align-items-center justify-content-center h-100"
+      >
+        <p class="text-muted">Nenhuma empresa encontrada.</p>
+      </div>
+      <div
+        *ngIf="companies && companies.length > 0"
+        class="d-flex flex-column gap-3"
+      >
         <div
           *ngFor="let company of companies"
           class="company-card d-flex justify-content-between align-items-center p-3"

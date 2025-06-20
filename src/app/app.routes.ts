@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { PedidosComponent } from './views/pedidos/pedidos.component';
-import { PedidosFormComponent } from './views/pedidos/pedidos-form/pedidos-form.component';
+import { SolicitationsComponent } from './views/solicitations/solicitations.component';
+import { SolicitationFormComponent } from './views/solicitations/solicitation-form/solicitation-form.component';
 
 export const routes: Routes = [
   {
@@ -13,15 +13,15 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: PedidosComponent,
+        component: SolicitationsComponent,
       },
       {
         path: "novo",
-        component: PedidosFormComponent
+        component: SolicitationFormComponent
       },
       {
         path: "editar/:id",
-        component: PedidosFormComponent
+        component: SolicitationFormComponent
       }
     ],
   },

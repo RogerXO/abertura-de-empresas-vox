@@ -30,7 +30,7 @@
         "
         errorMessage="{{
           getFormControl('solicitante.nu_cpf')?.hasError('pattern')
-            ? 'Formato inválido.'
+            ? 'Formato inválido (000.000.000-00).'
             : 'Campo obrigatório.'
         }}"
       ></app-input>
@@ -110,7 +110,7 @@
           "
           errorMessage="{{
             getFormControl('empresa.endereco.co_cep')?.hasError('pattern')
-              ? 'Formato inválido.'
+              ? 'Formato inválido (000000-00)'
               : 'Campo obrigatório.'
           }}"
         ></app-input>

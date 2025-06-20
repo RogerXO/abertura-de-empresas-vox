@@ -8,7 +8,7 @@ export interface Company {
     ds_nome_fantasia: string;
     co_entidade_registro: number;
     endereco: {
-      co_cep: number;
+      co_cep: string;
       ds_logradouro: string;
       co_numero: string;
       ds_complemento: string | null;

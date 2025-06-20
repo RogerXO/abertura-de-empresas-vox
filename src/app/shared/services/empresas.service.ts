@@ -27,7 +27,7 @@ export class EmpresasService extends ApiService {
       co_entidade_registro: [0, Validators.required],
       endereco: this.formBuilder.group({
         co_cep: [
-          0,
+          "",
           [Validators.required, Validators.pattern(/^[0-9]{5}-[0-9]{3}$/)],
         ],
         ds_logradouro: ['', Validators.required],

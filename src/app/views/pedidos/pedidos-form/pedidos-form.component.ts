@@ -28,7 +28,7 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
     private _activatedRouter: ActivatedRoute,
     private _utils: UtilsService,
     private _router: Router,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
   ) {}
 
   @HostListener('window:resize', [])
@@ -37,6 +37,7 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.spinner.show()
     this.checkScreenSize();
 
     this.getUfList();
@@ -74,6 +75,8 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
         error: (err) => console.error(err),
       });
     }
+
+    this.spinner.hide()
   }
 
   getFormControl(controlName: string) {

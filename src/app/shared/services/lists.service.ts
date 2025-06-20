@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-import { take } from 'rxjs/operators';
 import { RegistrationEntity, UF } from '../models/lists.model';
 import { ApiService } from './api.service';
-import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

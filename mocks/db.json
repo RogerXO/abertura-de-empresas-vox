@@ -62,6 +62,90 @@
         }
       },
       "id": "14f7"
+    },
+    {
+      "solicitante": {
+        "ds_responsavel": "Jeff Bezos",
+        "nu_cpf": "111.111.111-11",
+        "date_nascimento": "2025-06-04"
+      },
+      "empresa": {
+        "ds_nome_fantasia": "Amazon",
+        "co_entidade_registro": 104306,
+        "endereco": {
+          "co_cep": "00000-000",
+          "ds_logradouro": "Avenida Brasil",
+          "co_numero": "1074",
+          "ds_complemento": "",
+          "ds_bairro": "Lourdes",
+          "ds_municipio": "Belo Horizonte",
+          "co_uf": "MG"
+        }
+      },
+      "id": "d148"
+    },
+    {
+      "id": "c053",
+      "solicitante": {
+        "ds_responsavel": "Luciana",
+        "nu_cpf": "222.222.222-22",
+        "date_nascimento": "2025-06-11"
+      },
+      "empresa": {
+        "ds_nome_fantasia": "Fashion Modas",
+        "co_entidade_registro": 104305,
+        "endereco": {
+          "co_cep": "00000-000",
+          "ds_logradouro": "Rua Um",
+          "co_numero": "1",
+          "ds_complemento": null,
+          "ds_bairro": "Jardim Primavera",
+          "ds_municipio": "João Pessoa",
+          "co_uf": "PB"
+        }
+      }
+    },
+    {
+      "id": "5d16",
+      "solicitante": {
+        "ds_responsavel": "Ronan",
+        "nu_cpf": "222.222.222-22",
+        "date_nascimento": "2025-06-05"
+      },
+      "empresa": {
+        "ds_nome_fantasia": "Mecânica do Ronan",
+        "co_entidade_registro": 104305,
+        "endereco": {
+          "co_cep": "31744-305",
+          "ds_logradouro": "Rua Floramar",
+          "co_numero": "456",
+          "ds_complemento": null,
+          "ds_bairro": "Floramar",
+          "ds_municipio": "Belo Horizonte",
+          "co_uf": "MG"
+        }
+      }
+    },
+    {
+      "id": "78fc",
+      "solicitante": {
+        "ds_responsavel": "Tales",
+        "nu_cpf": "444.444.444-44",
+        "date_nascimento": "2025-06-04"
+      },
+      "empresa": {
+        "ds_nome_fantasia": "Panificadora Vila Cloris",
+        "co_entidade_registro": 104305,
+        "endereco": {
+          "co_cep": "31744-305",
+          "ds_logradouro": "Rua dos Passaros",
+          "co_numero": "152",
+          "ds_complemento": null,
+          "ds_bairro": "Vila Cloris",
+          "ds_municipio": "Belo Horizonte",
+          "co_uf": "MG"
+        }
+      }
     }
   ],
   "entidade-registro": [

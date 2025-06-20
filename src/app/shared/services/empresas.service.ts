@@ -1,7 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { UtilsService } from './utils.service';
-import { Router } from '@angular/router';
 import { ApiService } from './api.service';
 import { HttpClient } from '@angular/common/http';
 import { Company } from '../models/company.model';

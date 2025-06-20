@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Company } from '../../../../shared/models/company.model';
 import { CommonModule } from '@angular/common';
 
@@ -10,4 +10,10 @@ import { CommonModule } from '@angular/common';
 })
 export class CompanyCardComponent {
   @Input() company!: Company;
+
+  @Output() onSelectCompany = new EventEmitter();
+
+  emitSelectedCompany() {
+    this.onSelectCompany.emit(this.company);
+  }
 }

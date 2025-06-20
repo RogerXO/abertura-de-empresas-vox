@@ -39,7 +39,7 @@ export class PedidosComponent implements OnInit {
       });
   }
 
-  selectCompany(company: Company) {
+  selectCompany(company: any) {
     this.selectedCompany = company;
   }
 }

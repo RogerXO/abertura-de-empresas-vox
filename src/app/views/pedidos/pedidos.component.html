@@ -7,10 +7,10 @@
           *ngFor="let company of companies"
           class="company-card d-flex justify-content-between align-items-center p-3"
           [class.selected]="selectedCompany?.id === company.id"
-          (click)="selectCompany(company)"
         >
           <app-company-card
             [company]="company"
+            (onSelectCompany)="selectCompany($event)"
             class="w-100"
           ></app-company-card>
         </div>

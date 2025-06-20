@@ -8,7 +8,7 @@
       <p class="company-subtitle">{{ company.empresa.ds_nome_fantasia }}</p>
     </div>
   </div>
-  <button class="btn btn-primary btn-visualizar d-flex align-items-center">
+  <button (click)="emitSelectedCompany()" class="btn btn-primary btn-visualizar d-flex align-items-center">
     <i class="bi bi-eye fs-6 me-1"></i>
     Visualizar
   </button>

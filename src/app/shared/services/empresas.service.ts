@@ -27,7 +27,7 @@ export class EmpresasService extends ApiService {
       co_entidade_registro: [0, Validators.required],
       endereco: this.formBuilder.group({
         co_cep: [
-          "",
+          '',
           [Validators.required, Validators.pattern(/^[0-9]{5}-[0-9]{3}$/)],
         ],
         ds_logradouro: ['', Validators.required],
@@ -62,8 +62,8 @@ export class EmpresasService extends ApiService {
           ds_bairro: data.empresa.endereco.ds_bairro,
           ds_municipio: data.empresa.endereco.ds_municipio,
           co_uf: data.empresa.endereco.co_uf,
-        }
-      }
+        },
+      },
     });
   }
 

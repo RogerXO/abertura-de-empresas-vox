@@ -2,6 +2,7 @@
   <div class="form-container">
     <label>{{ label }}</label>
     <input
+      [mask]="mask"
       [placeholder]="placeholder"
       [type]="type"
       class="form-control"
@@ -15,6 +16,7 @@
   <div [formGroup]="formGroup" class="form-container">
     <label>{{ label }}</label>
     <input
+      [mask]="mask"
       [placeholder]="placeholder"
       [type]="type"
       [formControl]="control"

@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Company } from '../../shared/models/company.model';
 import { CompanyCardComponent } from './components/company-card/company-card.component';
 import { CompanyDetailComponent } from './components/company-detail/company-detail.component';
-import { EmpresasService } from '../../shared/services/empresas.service';
+import { CompanyService } from '../../shared/services/company.service';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { finalize } from 'rxjs/operators';
 import { UtilsService } from '../../shared/services/utils.service';
@@ -17,7 +17,7 @@ import { UtilsService } from '../../shared/services/utils.service';
     NgxSpinnerModule,
   ],
   templateUrl: './solicitations.component.html',
-  styleUrl: './solicitations.component.css'
+  styleUrl: './solicitations.component.css',
 })
 export class SolicitationsComponent implements OnInit {
   selectedCompany: Company | null = null;
@@ -25,7 +25,7 @@ export class SolicitationsComponent implements OnInit {
   companies: Company[] = [];
 
   constructor(
-    public empresasService: EmpresasService,
+    public empresasService: CompanyService,
     private _spinner: NgxSpinnerService,
     private _utils: UtilsService
   ) {}
@@ -38,8 +38,8 @@ export class SolicitationsComponent implements OnInit {
       .subscribe({
         next: (res) => (this.companies = res),
         error: (err) => {
-          console.error(err)
-          this._utils.showErrorToastDialog("os contratos")
+          console.error(err);
+          this._utils.showErrorToastDialog('os contratos');
         },
       });
   }

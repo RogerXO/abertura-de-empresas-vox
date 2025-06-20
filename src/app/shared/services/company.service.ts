@@ -7,7 +7,7 @@ import { Company } from '../models/company.model';
 @Injectable({
   providedIn: 'root',
 })
-export class EmpresasService extends ApiService {
+export class CompanyService extends ApiService {
   private formBuilder = inject(FormBuilder);
 
   form = this.formBuilder.group({

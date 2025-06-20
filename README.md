@@ -2,7 +2,7 @@
 
 ## Visão Geral
 
-Este projeto é uma aplicação frontend desenvolvida em Angular para gerenciar solicitações de empresas. Ele permite listar, visualizar detalhes e cadastrar/editar empresas, utilizando um mock de API para simulação de backend.
+Este projeto é uma aplicação frontend desenvolvida em Angular para gerenciar solicitações de empresas. Ele permite listar, visualizar detalhes, cadastrar/editar e deletar empresas, utilizando um mock de API para simulação de backend.
 
 ---
 
@@ -38,6 +38,7 @@ vox-frontend-test/
 - **Listagem de Empresas:** Exibe todas as empresas cadastradas.
 - **Detalhes da Empresa:** Mostra informações detalhadas da empresa selecionada.
 - **Cadastro/Edição:** Permite criar ou editar empresas via formulário validado.
+- **Exclusão de Empresas:** Permite deletar uma empresa selecionada diretamente pela tela de detalhes, com atualização automática da lista e feedback visual.
 - **Mock API:** Utiliza `json-server` para simular operações de backend.
 
 ---
@@ -52,10 +53,10 @@ vox-frontend-test/
 
 ### Componentes
 
-- **SolicitationsComponent:** Lista empresas e permite selecionar para ver detalhes.
+- **SolicitationsComponent:** Lista empresas, permite selecionar para ver detalhes e realizar a exclusão.
 - **SolicitationFormComponent:** Formulário reativo para cadastro/edição de empresas.
 - **CompanyCardComponent:** Card individual de empresa na listagem.
-- **CompanyDetailComponent:** Exibe detalhes completos da empresa selecionada.
+- **CompanyDetailComponent:** Exibe detalhes completos da empresa selecionada, com botões para editar e deletar.
 
 ### Serviços
 

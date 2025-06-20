@@ -6,6 +6,7 @@ import { CompanyDetailComponent } from './components/company-detail/company-deta
 import { EmpresasService } from '../../shared/services/empresas.service';
 import { NgxSpinnerModule, NgxSpinnerService } from 'ngx-spinner';
 import { finalize } from 'rxjs/operators';
+import { UtilsService } from '../../shared/services/utils.service';
 
 @Component({
   selector: 'app-pedidos',
@@ -25,17 +26,21 @@ export class PedidosComponent implements OnInit {
 
   constructor(
     public empresasService: EmpresasService,
-    private spinner: NgxSpinnerService
+    private _spinner: NgxSpinnerService,
+    private _utils: UtilsService
   ) {}
 
   ngOnInit() {
-    this.spinner.show();
+    this._spinner.show();
     this.empresasService
       .getList()
-      .pipe(finalize(() => this.spinner.hide()))
+      .pipe(finalize(() => this._spinner.hide()))
       .subscribe({
         next: (res) => (this.companies = res),
-        error: (err) => console.error(err),
+        error: (err) => {
+          console.error(err)
+          this._utils.showErrorToastDialog("os contratos")
+        },
       });
   }
 

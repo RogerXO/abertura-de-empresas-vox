@@ -60,14 +60,20 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
         this.ufList = res;
         this.ufList.sort((a, b) => a.sigla.localeCompare(b.sigla));
       },
-      error: (err) => console.error(err),
+      error: (err) => {
+        console.error(err);
+        this._utils.showErrorToastDialog('os estados');
+      },
     });
   }
 
   getRegistrationEntitiesList() {
     this._listsService.getRegistrationEntitiesList().subscribe({
       next: (res) => (this.registrationEntitiesList = res),
-      error: (err) => console.error(err),
+      error: (err) => {
+        console.error(err);
+        this._utils.showErrorToastDialog('as entidades de registro');
+      },
     });
   }
 
@@ -75,7 +81,10 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
     if (this.id) {
       this.empresasService.getById<Company>('empresas', this.id).subscribe({
         next: (res) => this.empresasService.setForm(res),
-        error: (err) => console.error(err),
+        error: (err) => {
+          console.error(err);
+          this._utils.showErrorToastDialog('os dados');
+        },
       });
     }
 
@@ -100,6 +109,7 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
         },
         error: (err) => {
           console.error(err);
+          this._utils.showErrorDialog(err);
         },
       });
     } else {

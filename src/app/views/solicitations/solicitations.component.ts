@@ -47,4 +47,26 @@ export class SolicitationsComponent implements OnInit {
   selectCompany(company: any) {
     this.selectedCompany = company;
   }
+
+  deleteCompany(id: string) {
+    this._spinner.show();
+    
+    this.empresasService
+      .delete('empresas', id)
+      .pipe(finalize(() => this._spinner.hide()))
+      .subscribe({
+        next: () => {
+          this.companies = this.companies.filter((c) => c.id !== id);
+          this.selectedCompany = null;
+          this._utils.showToastDialog(
+            'Empresa deletada com sucesso!',
+            'success'
+          );
+        },
+        error: (err) => {
+          console.error(err);
+          this._utils.showErrorToastDialog('a empresa');
+        },
+      });
+  }
 }

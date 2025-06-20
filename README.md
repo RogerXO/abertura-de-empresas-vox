@@ -128,5 +128,9 @@ vox-frontend-test/
 
 ## O que não fiz
 
-Eu percebi que o spinner em alguns momentos sumia antes do momento correto, mas como são requisições super rápidas são mais difíceis de testar se realmente deixei melhor. Em um projeto com mais dados seria mais fácil testar.
-Então como eu iria ter que simular muitas situações que achei que não valiam o tempo, deixei isso de lado, o spinner está funcionando perfeitamente só tem essa questão de como são requisições rápida então ele passa despercebido.
+Eu percebi que o spinner em alguns momentos sumia antes do momento correto.
+Mas como são requisições super rápidas são mais difíceis de testar se realmente deixei melhor.
+Em um projeto com mais dados seria mais fácil testar.
+
+Então como eu iria ter que simular muitas situações que achei que não valiam o tempo, deixei isso de lado.
+O spinner está funcionando perfeitamente só tem essa questão de por serem requisições rápida então ele passa despercebido.

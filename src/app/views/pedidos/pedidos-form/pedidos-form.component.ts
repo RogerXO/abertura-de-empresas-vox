@@ -7,6 +7,8 @@ import { ListsService } from '../../../shared/services/lists.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UtilsService } from '../../../shared/services/utils.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Company } from '../../../shared/models/company.model';
+import { RegistrationEntity } from '../../../shared/models/lists.model';
 
 @Component({
   selector: 'app-pedidos-form',
@@ -18,7 +20,7 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
   showDivider = true;
 
   ufList: string[] = [];
-  registrationEntitiesList: string[] = [];
+  registrationEntitiesList: RegistrationEntity[] = [];
 
   constructor(
     public empresasService: EmpresasService,
@@ -39,10 +41,16 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
 
     this.getUfList();
     this.getRegistrationEntitiesList();
+
+    this.loadData();
   }
 
   ngOnDestroy() {
     this.empresasService.form.reset();
+  }
+
+  private checkScreenSize() {
+    this.showDivider = window.innerWidth >= 768;
   }
 
   getUfList() {
@@ -54,15 +62,18 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
 
   getRegistrationEntitiesList() {
     this._listsService.getRegistrationEntitiesList().subscribe({
-      next: (res) => {
-        this.registrationEntitiesList = res.map((item) => item.value);
-      },
+      next: (res) => (this.registrationEntitiesList = res),
       error: (err) => console.error(err),
     });
   }
 
-  private checkScreenSize() {
-    this.showDivider = window.innerWidth >= 768;
+  loadData() {
+    if (this.id) {
+      this.empresasService.getById<Company>('empresas', this.id).subscribe({
+        next: (res) => this.empresasService.setForm(res),
+        error: (err) => console.error(err),
+      });
+    }
   }
 
   getFormControl(controlName: string) {
@@ -87,6 +98,7 @@ export class PedidosFormComponent implements OnInit, OnDestroy {
       });
     } else {
       this.empresasService.form.markAllAsTouched();
+      this.spinner.hide();
     }
   }
 

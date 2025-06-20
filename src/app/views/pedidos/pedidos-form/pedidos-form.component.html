@@ -66,12 +66,12 @@
           <input
             type="radio"
             class="form-check-input"
-            [value]="entity"
+            [value]="entity.key"
             formControlName="co_entidade_registro"
-            id="entidade-{{ entity }}"
+            [id]="entity.id"
           />
-          <label class="form-check-label" [for]="'entidade-' + entity">
-            {{ entity }}
+          <label class="form-check-label" [for]="entity.id">
+            {{ entity.value }}
           </label>
         </div>
         <div

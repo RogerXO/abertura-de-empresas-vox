@@ -10,7 +10,7 @@ export interface UF {
 }
 
 export interface RegistrationEntity {
-  kay: number;
+  key: number;
   value: string;
   id: string;
 }

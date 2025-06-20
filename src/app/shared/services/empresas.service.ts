@@ -26,10 +26,10 @@ export class EmpresasService extends ApiService {
     }),
     empresa: this.formBuilder.group({
       ds_nome_fantasia: ['', Validators.required],
-      co_entidade_registro: ['', Validators.required],
+      co_entidade_registro: [0, Validators.required],
       endereco: this.formBuilder.group({
         co_cep: [
-          '',
+          0,
           [Validators.required, Validators.pattern(/^[0-9]{5}-[0-9]{3}$/)],
         ],
         ds_logradouro: ['', Validators.required],
@@ -44,6 +44,29 @@ export class EmpresasService extends ApiService {
 
   constructor(protected http: HttpClient) {
     super(http);
+  }
+
+  setForm(data: Company) {
+    this.form.patchValue({
+      solicitante: {
+        ds_responsavel: data.solicitante.ds_responsavel,
+        nu_cpf: data.solicitante.nu_cpf,
+        date_nascimento: data.solicitante.date_nascimento,
+      },
+      empresa: {
+        ds_nome_fantasia: data.empresa.ds_nome_fantasia,
+        co_entidade_registro: data.empresa.co_entidade_registro,
+        endereco: {
+          co_cep: data.empresa.endereco.co_cep,
+          ds_logradouro: data.empresa.endereco.ds_logradouro,
+          co_numero: data.empresa.endereco.co_numero,
+          ds_complemento: data.empresa.endereco.ds_complemento,
+          ds_bairro: data.empresa.endereco.ds_bairro,
+          ds_municipio: data.empresa.endereco.ds_municipio,
+          co_uf: data.empresa.endereco.co_uf,
+        }
+      }
+    });
   }
 
   getList() {

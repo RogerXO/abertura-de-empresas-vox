@@ -1,5 +1,5 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { EmpresasService } from '../../../shared/services/empresas.service';
+import { CompanyService } from '../../../shared/services/company.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../../shared/components/ui/input/input.component';
@@ -24,7 +24,7 @@ export class SolicitationFormComponent implements OnInit, OnDestroy {
   registrationEntitiesList: RegistrationEntity[] = [];
 
   constructor(
-    public empresasService: EmpresasService,
+    public empresasService: CompanyService,
     private _listsService: ListsService,
     private _activatedRouter: ActivatedRoute,
     private _utils: UtilsService,

@@ -1,59 +1,130 @@
-# VoxFrontendTest
+# Vox Frontend Test
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+## Visão Geral
 
-## Development server
+Este projeto é uma aplicação frontend desenvolvida em Angular para gerenciar solicitações de empresas. Ele permite listar, visualizar detalhes e cadastrar/editar empresas, utilizando um mock de API para simulação de backend.
 
-To start a local development server, run:
+---
 
-```bash
-ng serve
+## Estrutura do Projeto
+
+```
+vox-frontend-test/
+├── angular.json                # Configuração do Angular
+├── package.json                # Dependências e scripts
+├── mocks/
+│   └── db.json                 # Mock de dados para o json-server
+├── public/
+│   └── assets/                 # Imagens e ícones
+├── src/
+│   ├── app/
+│   │   ├── app.component.*     # Componente raiz
+│   │   ├── app.routes.ts       # Rotas principais
+│   │   ├── shared/
+│   │   │   ├── components/     # Componentes reutilizáveis (UI, layout)
+│   │   │   ├── models/         # Modelos de dados (Company, Lists)
+│   │   │   └── services/       # Serviços (API, empresas, listas, utilitários)
+│   │   └── views/
+│   │       └── solicitations/  # Telas de solicitações (listar, detalhes, formulário)
+│   ├── environments/           # Configurações de ambiente
+│   └── styles.css              # Estilos globais
+└── ...
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
+## Principais Funcionalidades
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Listagem de Empresas:** Exibe todas as empresas cadastradas.
+- **Detalhes da Empresa:** Mostra informações detalhadas da empresa selecionada.
+- **Cadastro/Edição:** Permite criar ou editar empresas via formulário validado.
+- **Mock API:** Utiliza `json-server` para simular operações de backend.
 
-```bash
-ng generate component component-name
-```
+---
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Principais Arquivos e Funções
 
-```bash
-ng generate --help
-```
+### Rotas (`src/app/app.routes.ts`)
 
-## Building
+- `/pedidos` — Lista de empresas (componente `SolicitationsComponent`)
+- `/pedidos/novo` — Cadastro de nova empresa (componente `SolicitationFormComponent`)
+- `/pedidos/editar/:id` — Edição de empresa existente (reutiliza o componente `SolicitationFormComponent` )
 
-To build the project run:
+### Componentes
 
-```bash
-ng build
-```
+- **SolicitationsComponent:** Lista empresas e permite selecionar para ver detalhes.
+- **SolicitationFormComponent:** Formulário reativo para cadastro/edição de empresas.
+- **CompanyCardComponent:** Card individual de empresa na listagem.
+- **CompanyDetailComponent:** Exibe detalhes completos da empresa selecionada.
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+### Serviços
 
-## Running unit tests
+- **CompanyService:** Gerencia o formulário, busca/lista empresas, envia dados para a API.
+- **ApiService:** Abstrai requisições HTTP (GET, POST, PUT, DELETE).
+- **ListsService:** Busca listas auxiliares (UFs, entidades de registro).
+- **UtilsService:** Utilitários para exibir diálogos e toasts de feedback.
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+### Modelos
 
-```bash
-ng test
-```
+- **Company:** Estrutura de dados de uma empresa e solicitante.
+- **UF, RegistrationEntity:** Modelos para estados e entidades de registro.
 
-## Running end-to-end tests
+### Mock de Dados
 
-For end-to-end (e2e) testing, run:
+- **mocks/db.json:** Contém empresas e entidades de registro para simulação.
 
-```bash
-ng e2e
-```
+---
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Como Executar o Projeto
 
-## Additional Resources
+1. **Pré-requisitos:**
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+   - Node.js (recomendado v18+)
+   - npm
+
+2. **Instale as dependências:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Inicie o mock da API:**
+
+   ```bash
+   npm run mock
+   ```
+
+   O mock estará disponível em http://localhost:3000
+
+4. **Inicie o frontend Angular:**
+   ```bash
+   npm run start
+   ```
+   O app estará disponível em http://localhost:4200
+
+> **Dica:** Rode ambos os comandos em terminais separados para manter o frontend e o mock backend ativos.
+
+---
+
+## Observações Importantes
+
+- O projeto utiliza Angular 19, Bootstrap 5 e SweetAlert2 para UI/UX.
+- O formulário é validado e exibe mensagens de erro amigáveis.
+- O mock de dados pode ser editado em `mocks/db.json`.
+- Para adicionar novas entidades de registro, edite o array `entidade-registro` no mock.
+- O código está modularizado para facilitar manutenção e expansão.
+
+---
+
+## Scripts Disponíveis
+
+- `npm run start` — Inicia o servidor de desenvolvimento Angular.
+- `npm run mock` — Inicia o mock de API com json-server.
+- `npm run build` — Gera build de produção.
+- `npm run test` — Executa os testes unitários.
+
+---
+
+## Contato
+
+Dúvidas ou sugestões? Abra uma issue ou entre em contato com o responsável pelo repositório.
